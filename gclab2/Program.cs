@@ -9,41 +9,55 @@ namespace gclab2
     class Program
     {
         static void Main(string[] args)
-
         {
+            Console.WriteLine("Welcome to Grand Circus' Room Detail Generator!");
+
             bool y = true;
-            bool Y = true;
-            while (y || Y == true)
+            while (y)
             {
-                Console.WriteLine();
-                Console.WriteLine("Welcome to Grand Circus' Room Detail Generator!");
+                //user input section
+
                 Console.WriteLine("Enter Length: ");
-
-                //takes the first user entry and assigns it as length and converts it to a double
                 string length = Console.ReadLine();
-                double doubleLength = Convert.ToDouble(length);
 
-                //takes the second user entry, assigns it as width and converts it to a double
                 Console.WriteLine("Enter Width: ");
                 string width = Console.ReadLine();
-                double doubleWidth = Convert.ToDouble(width);
+
+
+                //even though the assignment says we are given numbers I still put in a check
+                decimal dLength;
+                decimal dWidth;
+                bool num1 = decimal.TryParse(length, out dLength);
+                bool num2 = decimal.TryParse(width, out dWidth);
+                if (!(num1 && num2))
+                {
+                    Console.WriteLine("You did not enter numbers");
+                    break;
+                }
 
                 //Math for area and perimeter
-                double area = doubleWidth * doubleLength;
-                double perimeter = (doubleWidth * 2) + (doubleLength * 2);
+                decimal area = dWidth * dLength;
+                decimal perimeter = (dWidth * 2) + (dLength * 2);
 
                 //Output
                 Console.WriteLine("Area:" + area);
-                Console.WriteLine("Preimeter:" + perimeter);
+                Console.WriteLine("Perimeter:" + perimeter);
 
-                Console.WriteLine("Continue? (y/n):");
-                if (Console.ReadKey().KeyChar == 'y')
+
+                //The magic y/n loop until y or n is pressed. When I got home from class
+                //I wanted to change something and caught that while you could press y or n
+                //n did not actually exit the program as I wasn't reading the keystroke properly
+                bool invalid = true;
+                while (invalid)
                 {
-                   y = true;
-                }
-                else
-                {
-                    y = false;
+                    Console.WriteLine("Continue? (y/n):");
+                    ConsoleKeyInfo pressed = Console.ReadKey();
+                    Console.WriteLine();
+                    bool isY = pressed.Key == ConsoleKey.Y;
+                    bool isN = pressed.Key == ConsoleKey.N;
+
+                    invalid = !isY && !isN;
+                    y = isY;
                 }
             }
         }
