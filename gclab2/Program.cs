@@ -12,8 +12,10 @@ namespace gclab2
 
         {
             bool y = true;
-            while (y == true)
+            bool Y = true;
+            while (y || Y == true)
             {
+                Console.WriteLine();
                 Console.WriteLine("Welcome to Grand Circus' Room Detail Generator!");
                 Console.WriteLine("Enter Length: ");
 
