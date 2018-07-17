@@ -36,8 +36,8 @@ namespace gclab2
                 bool num3 = decimal.TryParse(height, out dHeight);
                 if (!(num1 && num2 && num3))
                 {
-                    Console.WriteLine("You did not enter numbers");
-                    break;
+                    Console.WriteLine("One or more inputs is invalid");
+                    continue;
                 }
 
                 //Math for area, perimeter, and volume
