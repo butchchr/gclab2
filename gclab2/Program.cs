@@ -23,26 +23,32 @@ namespace gclab2
                 Console.WriteLine("Enter Width: ");
                 string width = Console.ReadLine();
 
+                //added the extra challenge volume calc and needed user input
+                Console.WriteLine("Enter height (if not using height enter 1): ");
+                string height = Console.ReadLine();
 
                 //even though the assignment says we are given numbers I still put in a check
                 decimal dLength;
                 decimal dWidth;
+                decimal dHeight;
                 bool num1 = decimal.TryParse(length, out dLength);
                 bool num2 = decimal.TryParse(width, out dWidth);
-                if (!(num1 && num2))
+                bool num3 = decimal.TryParse(height, out dHeight);
+                if (!(num1 && num2 && num3))
                 {
                     Console.WriteLine("You did not enter numbers");
                     break;
                 }
 
-                //Math for area and perimeter
+                //Math for area, perimeter, and volume
                 decimal area = dWidth * dLength;
                 decimal perimeter = (dWidth * 2) + (dLength * 2);
+                decimal volume = dWidth * dLength * dHeight;
 
                 //Output
                 Console.WriteLine("Area:" + area);
                 Console.WriteLine("Perimeter:" + perimeter);
-
+                Console.WriteLine("Volume: " + volume);
 
                 //The magic y/n loop until y or n is pressed. When I got home from class
                 //I wanted to change something and caught that while you could press y or n
